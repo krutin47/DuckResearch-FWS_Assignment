@@ -16,8 +16,8 @@ router.route('/display').get((req, res) => {
 });
 
 // To check for Specific data from survey with first name
-router.route('/check:firstName').get((req, res) => {
-  duckModel.findById(req.params.firstName)
+router.route('/check/:firstName').get((req, res) => {
+  duckModel.find({firstName: req.params.firstName})
     .then(duck => {
       res.json(duck)
       console.log(duck);
@@ -35,8 +35,8 @@ router.route('/addSurvey').post((req, res) => {
   if (typeof req.body.location.trim() === 'undefined' || req.body.location.trim() === '') return res.send(JSON.stringify({"status": 400, "error": 'location input is wronge..!'}));
   if (typeof req.body.time.trim() === 'undefined' || req.body.time.trim() === '') return res.send(JSON.stringify({"status": 400, "error": 'time input is wronge..!'}));
   if (typeof req.body.food.trim() === 'undefined' || req.body.food.trim() === '') return res.send(JSON.stringify({"status": 400, "error": 'food input is wronge..!'}));
-  if (!req.body.duckCount.trim() || isNaN(req.body.duckCount.trim())) return res.send(JSON.stringify({"status": 400, "error": 'duckCount input is wronge..!'}));
-  if (!req.body.foodCount.trim() || isNaN(req.body.foodCount.trim())) return res.send(JSON.stringify({"status": 400, "error": 'foodCount input is wronge..!'}));
+  if (!req.body.duckCount || isNaN(req.body.duckCount)) return res.send(JSON.stringify({"status": 400, "error": 'duckCount input is wronge..!'}));
+  if (!req.body.foodCount || isNaN(req.body.foodCount)) return res.send(JSON.stringify({"status": 400, "error": 'foodCount input is wronge..!'}));
   
   //Storing the paramters
   const firstName = req.body.firstName;
@@ -44,21 +44,8 @@ router.route('/addSurvey').post((req, res) => {
   const location = req.body.location;
   const time = req.body.time;
   const food = req.body.food;
-  const duckCount
-  const foodCount;
-  
-  //checking if it can be converted into number
-  try {
-    duckCount = Number(req.body.duckCount);
-  } catch (error) {
-    return res.send(JSON.stringify({"status": 400, "error": 'duckCount input is wronge..!'}));
-  }
-
-  try {
-    foodCount = Number(req.body.foodCount);
-  } catch (error) {
-    return res.send(JSON.stringify({"status": 400, "error": 'foodCount input is wronge..!'}));
-  }
+  const duckCount = req.body.duckCount;
+  const foodCount = req.body.foodCount;
   
   //creating new survey object to save
   const newSurvey = new duckModel({ 

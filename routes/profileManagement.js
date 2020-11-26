@@ -12,7 +12,6 @@ const sendMail = require('../utils/sendingEmail');
 // Getting User Model
 let User = require('../models/user.model');
 let ResetPass = require('../models/resetPassword.model');
-let userReq = require('../models/Request.model');
 
 /* GET users listing. */
 router.route('/').get((req, res) => {
@@ -261,27 +260,6 @@ router.route('/reset').post((req, res) => {
       res.json('Error! ' + err);
     }
   });
-});
-
-// user request API
-router.route('/request_quote').post((req, res) => {
-  const firstName = req.body.firstName;
-  const lastName = req.body.lastName;
-  const email = req.body.email;
-
-  const newUser = new userReq({ 
-    firstName,
-    lastName,
-    email,
-  });
-
-  newUser.save()
-      .then(() => {
-        sendMail.userRequest(firstName, lastName, email);
-        res.json('Request added! => ' + newUser);
-      })
-      .catch(err => res.status(400).json('Error: ' + err));
-            
 });
 
 module.exports = router;
