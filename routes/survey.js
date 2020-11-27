@@ -64,9 +64,14 @@ router.route('/addSurvey').post((req, res) => {
         if(existingDuckSurvey) {
             res.json('Oops! Survey already exists.');
         } else {
+          console.log("<----- newSurvey -----> ");
+          console.log(newSurvey);
           newSurvey.save()
               .then(() => res.json('Survey added! => ' + newSurvey))
-              .catch(err => res.status(400).json('Error: ' + err));    
+              .catch(err => {
+                console.log("error ---> "+ err);
+                res.status(400).json('Error: ' + err)
+              });    
         }
     })
     .catch(err => res.status(400).json('Error: ' + err));

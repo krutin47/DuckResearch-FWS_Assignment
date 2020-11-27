@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 //importing the required components
-import NavHeader from './components/Navbar/NavHeader';
+// import NavHeader from './components/Navbar/NavHeader';
 import Footer from './components/Footer/Footer';
 
 import Home from './components/Home/Home';

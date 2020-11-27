@@ -1,6 +1,6 @@
 /**
  * @file Register User Form component.
- * @author Krutin Trivedi, Banner No: B00843515 <krutin@dal.ca>
+ * @author Krutin Trivedi
  */
 
 //importing Components & required Modules
@@ -195,6 +195,7 @@ class DuckSurveyForm extends React.Component {
                     }
                 })
                 .catch(err => {
+                    console.log("Error ---> "+ err);
                     this.props.history.push("/errorCode400");
                 });
         } else{
