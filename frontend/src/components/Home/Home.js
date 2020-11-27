@@ -5,9 +5,8 @@
 
 //importing the required Module
 import React from 'react';
-import { Container } from 'react-bootstrap';
 import DuckSurveyForm from '../Survey/SurveyForm';
-import image_view from '../assets/images/duckFeeding.jpg'
+import image_view from '../assets/images/duckFeeding.jpg';
 
 function Home() {
   
