@@ -1,6 +1,6 @@
 /**
  * @file Error page with status code of 400 for the Application.
- * @author Krutin Trivedi, Banner No: B00843515 <krutin@dal.ca>
+ * @author Krutin Trivedi
  */
 
 //importing Components & required Modules
