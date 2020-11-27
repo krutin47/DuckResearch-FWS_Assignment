@@ -28,7 +28,7 @@ const duckSchema = new Schema({
         required: true,
         trim: true,
         minlength: 3,
-        maxlength: 20
+        maxlength: 50
     },
     time:{
         type: String,
