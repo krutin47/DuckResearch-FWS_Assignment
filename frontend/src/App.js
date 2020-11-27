@@ -16,6 +16,9 @@ import Home from './components/Home/Home';
 //Success Page
 import Success from './components/Survey/SuccessSurvey';
 
+//Display survey Page
+import DisplaySurvey from './components/Survey/DisplaySurvey';
+
 //Error pages
 import Error400 from "./components/error/error400";
 import Error404 from "./components/error/error404";
@@ -41,6 +44,9 @@ class App extends Component{
         
         {/* Success Page of Survey */}
         <Route path='/success' component={Success} />
+
+        {/* Displaying Results of the Survey */}
+        <Route path='/displaySurveys' component={DisplaySurvey}/>
 
         {/* This are the Error Pages for the application */}
         <Route path='/errorCode400' component={Error400} />
