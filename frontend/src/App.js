@@ -1,6 +1,6 @@
 /**
  * @file The root file for calling all the React Components
- * @authors Milap Bhaderi, Nikita Patel, Yash Shah and Krutin Trivedi
+ * @authors Krutin Trivedi
 */
 
 import React, { Component } from 'react';
@@ -13,39 +13,45 @@ import Footer from './components/Footer/Footer';
 
 import Home from './components/Home/Home';
 
+//Success Page
+import Success from './components/Survey/SuccessSurvey';
+
 //Error pages
-import error400 from "./components/error/error400";
-import error404 from "./components/error/error404";
+import Error400 from "./components/error/error400";
+import Error404 from "./components/error/error404";
 
 //importing CSS
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
-import './main.css'
+import './App.css'
 
 class App extends Component{
-    render() {
-		return (
+  render() {
+    return (
       <Router>
         
         {/* creating Toasts in the Application */}
         <ToastContainer />
         
         {/* This will load the Navbar to all the Components */}
-				<NavHeader />
+        {/* <NavHeader /> */}
 
         {/* Home Component */}
         <Route exact path='/' component={Home} />
         
+        {/* Success Page of Survey */}
+        <Route path='/success' component={Success} />
+
         {/* This are the Error Pages for the application */}
-        <Route path='/errorCode400' component={error400} />
-        <Route path='/errorCode404' component={error404} />
+        <Route path='/errorCode400' component={Error400} />
+        <Route path='/errorCode404' component={Error404} />
 
         {/* This will load the Footer To all Components */}
         <Footer />
       
       </Router>
-		);
-	}
+    );
+  }
 }
 
 export default App;
